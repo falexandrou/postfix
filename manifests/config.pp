@@ -1,4 +1,5 @@
 class postfix::config (
+  $inet_protocols                       = undef,
   $alias_maps                           = undef,
   $append_dot_mydomain                  = undef,
   $biff                                 = undef,
@@ -60,6 +61,8 @@ class postfix::config (
   $luser_relay                          = undef,
 ) {
   include postfix
+
+  postfix::config::maincfhelper { 'inet_protocols': value => $inet_protocols, }
 
   postfix::config::maincfhelper { 'luser_relay': value => $luser_relay, }
 
